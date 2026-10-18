@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Is My Child Creative? - 15-Point Parent Checklist</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    body { font-family: 'Plus Jakarta Sans', sans-serif; }
+  </style>
+</head>
+<body class="bg-slate-50 text-slate-800 antialiased min-h-screen flex flex-col">
+
+  <!-- Header -->
+  <header class="bg-white border-b border-slate-200 py-4 px-6 text-center sticky top-0 z-50 shadow-sm">
+    <div class="max-w-4xl mx-auto flex justify-between items-center">
+      <span class="font-extrabold text-xl text-indigo-600 tracking-tight">CreativityIQ <span class="text-xs bg-indigo-100 text-indigo-800 px-2 py-0.5 rounded-full uppercase">Parenting Tool</span></span>
+      <span class="text-xs font-semibold text-slate-500">⏱️ Takes 2 Minutes</span>
+    </div>
+  </header>
+
+  <main class="flex-grow max-w-3xl mx-auto px-4 py-8 w-full">
+    
+    <!-- STEP 1: Lead Capture / Intro -->
+    <div id="step-intro" class="bg-white rounded-2xl shadow-xl border border-slate-100 p-6 md:p-10 text-center">
+      <span class="inline-block bg-amber-100 text-amber-800 font-bold text-xs px-3 py-1 rounded-full mb-4 uppercase tracking-wider">Interactive Parent Assessment</span>
+      <h1 class="text-3xl md:text-4xl font-extrabold text-slate-900 tracking-tight mb-4">
+        Is Your Child a <span class="text-indigo-600">Designer Brain</span>? 🎨
+      </h1>
+      <p class="text-slate-600 text-base md:text-lg mb-8 max-w-xl mx-auto">
+        Tick 15 quick observations about your child. Uncover their creative archetype, hidden problem-solving strengths, and get a tailored analysis.
+      </p>
+
+      <form id="lead-form" class="max-w-md mx-auto text-left space-y-4">
+        <div>
+          <label class="block text-sm font-semibold text-slate-700 mb-1">Your Name *</label>
+          <input type="text" id="parent-name" required placeholder="e.g. Priya Sharma" class="w-full px-4 py-3 rounded-lg border border-slate-300 focus:ring-2 focus:ring-indigo-500 focus:outline-none">
+        </div>
+        <div>
+          <label class="block text-sm font-semibold text-slate-700 mb-1">Your WhatsApp / Email *</label>
+          <input type="text" id="parent-contact" required placeholder="To receive your detailed report copy" class="w-full px-4 py-3 rounded-lg border border-slate-300 focus:ring-2 focus:ring-indigo-500 focus:outline-none">
+        </div>
+        <div class="grid grid-cols-2 gap-4">
+          <div>
+            <label class="block text-sm font-semibold text-slate-700 mb-1">Child's Name</label>
+            <input type="text" id="child-name" placeholder="e.g. Aarav" class="w-full px-4 py-3 rounded-lg border border-slate-300 focus:ring-2 focus:ring-indigo-500 focus:outline-none">
+          </div>
+          <div>
+            <label class="block text-sm font-semibold text-slate-700 mb-1">Child's Age</label>
+            <select id="child-age" class="w-full px-4 py-3 rounded-lg border border-slate-300 focus:ring-2 focus:ring-indigo-500 focus:outline-none">
+              <option value="4-6">4 - 6 Years</option>
+              <option value="7-10" selected>7 - 10 Years</option>
+              <option value="11-14">11 - 14 Years</option>
+              <option value="15+">15+ Years</option>
+            </select>
+          </div>
+        </div>
+
+        <button type="submit" class="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-4 rounded-xl shadow-lg transition duration-200 text-lg mt-4 flex items-center justify-center gap-2">
+          Start 15-Point Checklist →
+        </button>
+      </form>
+    </div>
+
+    <!-- STEP 2: Interactive Checklist -->
+    <div id="step-checklist" class="hidden bg-white rounded-2xl shadow-xl border border-slate-100 p-6 md:p-10">
+      <div class="flex justify-between items-center mb-6 border-b border-slate-100 pb-4">
+        <div>
+          <h2 class="text-xl font-bold text-slate-900">15 Observation Points</h2>
+          <p class="text-xs text-slate-500">Tick "YES" for every trait your child exhibits regularly.</p>
+        </div>
+        <div class="bg-indigo-50 text-indigo-700 px-3 py-1.5 rounded-lg font-bold text-sm">
+          Score: <span id="current-score">0</span> / 15
+        </div>
+      </div>
+
+      <div id="checklist-container" class="space-y-3 mb-8">
+        <!-- Checklist items auto-generated via JS -->
+      </div>
+
+      <button id="btn-submit-checklist" class="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-bold py-4 rounded-xl shadow-lg transition duration-200 text-lg">
+        Generate Detailed Analysis Report 🚀
+      </button>
+    </div>
+
+    <!-- STEP 3: Results & Detailed Analysis -->
+    <div id="step-results" class="hidden space-y-6">
+      
+      <!-- Main Score Card -->
+      <div class="bg-white rounded-2xl shadow-xl border border-slate-100 p-6 md:p-8 text-center">
+        <span class="inline-block bg-indigo-100 text-indigo-800 font-extrabold text-xs px-3 py-1 rounded-full uppercase tracking-wider mb-2">Verified Assessment Result</span>
+        <h2 class="text-3xl font-extrabold text-slate-900 mb-1" id="res-child-title">Aarav's Creative Profile</h2>
+        <div class="my-6">
+          <div class="inline-flex items-center justify-center w-28 h-28 rounded-full bg-indigo-50 border-4 border-indigo-600 mb-2">
+            <span class="text-4xl font-extrabold text-indigo-600" id="res-score-num">12</span>
+            <span class="text-xs text-slate-400 font-bold">/15</span>
+          </div>
+          <h3 class="text-2xl font-bold text-indigo-900 mt-2" id="res-archetype">The Designer Brain 🧠🎨</h3>
+        </div>
+        <p class="text-slate-600 text-sm md:text-base leading-relaxed max-w-xl mx-auto" id="res-summary">
+          <!-- Summary inserted dynamically -->
+        </p>
+      </div>
+
+      <!-- Detailed Traits & Analysis Breakdown -->
+      <div class="bg-white rounded-2xl shadow-lg border border-slate-100 p-6 md:p-8 space-y-6">
+        <h3 class="text-xl font-bold text-slate-900 border-b border-slate-100 pb-3">In-Depth Cognitive Analysis</h3>
+        
+        <div class="space-y-4">
+          <div class="p-4 rounded-xl bg-slate-50 border border-slate-200">
+            <h4 class="font-bold text-slate-800 text-sm mb-1">💡 Key Creative Superpower</h4>
+            <p class="text-xs md:text-sm text-slate-600" id="res-superpower">Loading...</p>
+          </div>
+
+          <div class="p-4 rounded-xl bg-slate-50 border border-slate-200">
+            <h4 class="font-bold text-slate-800 text-sm mb-1">🛠️ Thinking Style & Spatial Intelligence</h4>
+            <p class="text-xs md:text-sm text-slate-600" id="res-thinking-style">Loading...</p>
+          </div>
+
+          <div class="p-4 rounded-xl bg-slate-50 border border-slate-200">
+            <h4 class="font-bold text-slate-800 text-sm mb-1">🌱 Next Growth Step for Parents</h4>
+            <p class="text-xs md:text-sm text-slate-600" id="res-recommendation">Loading...</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Call to Action & Share Hub -->
+      <div class="bg-gradient-to-r from-indigo-600 to-violet-600 rounded-2xl p-6 md:p-8 text-white text-center shadow-xl space-y-4">
+        <h3 class="text-2xl font-bold">Save & Share This Result</h3>
+        <p class="text-indigo-100 text-sm max-w-md mx-auto">
+          Every parent wants to discover their child's potential! Share this quick test with family and friends on WhatsApp.
+        </p>
+        
+        <div class="flex flex-col sm:flex-row gap-3 justify-center pt-2">
+          <button id="btn-share-whatsapp" class="bg-emerald-500 hover:bg-emerald-600 text-white font-bold py-3 px-6 rounded-xl shadow flex items-center justify-center gap-2">
+            <span>💬 Share Score on WhatsApp</span>
+          </button>
+          <button id="btn-download-pdf" onclick="window.print()" class="bg-white text-indigo-900 hover:bg-slate-100 font-bold py-3 px-6 rounded-xl shadow flex items-center justify-center gap-2">
+            <span>📄 Save Report / Print</span>
+          </button>
+        </div>
+      </div>
+
+    </div>
+
+  </main>
+
+  <!-- Script -->
+  <script>
+    const questions = [
+      "Takes toys or household objects apart to see how they work inside.",
+      "Uses everyday objects for completely unexpected creative purposes.",
+      "Asks unusual 'Why?' or 'What if?' questions that make adults pause.",
+      "Loves drawing, building blocks, or creating visual stories.",
+      "Prefers coming up with their own rules rather than copying set patterns.",
+      "Notices small visual details, colors, or spatial changes others miss.",
+      "Exhibits strong spatial sense (great with Lego, puzzles, or maps).",
+      "Expresses complex emotions vividly through art, crafts, or drama.",
+      "Can spend hours uninterrupted when engrossed in building or creating.",
+      "Enjoys creative messiness (paints, clays, cardboard box builds).",
+      "Often gets lost in deep daydreaming or imagining original scenarios.",
+      "Tries multiple distinct methods to solve a physical or logical puzzle.",
+      "Loves personalizing, modifying, or decorating their clothes or belongings.",
+      "Shows keen fascination with architecture, nature textures, or shapes.",
+      "Frequently doodles, sketches, or tinkers with material while listening."
+    ];
+
+    let parentData = {};
+    let selectedScores = new Array(questions.length).fill(false);
+
+    // Render Checklist Questions
+    const container = document.getElementById('checklist-container');
+    questions.forEach((q, idx) => {
+      const card = document.createElement('label');
+      card.className = "flex items-start p-3.5 rounded-xl border border-slate-200 bg-white hover:border-indigo-300 cursor-pointer transition flex items-center gap-3";
+      card.innerHTML = `
+        <input type="checkbox" data-idx="${idx}" class="q-checkbox w-5 h-5 text-indigo-600 rounded focus:ring-indigo-500 mt-0.5">
+        <span class="text-sm font-medium text-slate-700 flex-1">${idx + 1}. ${q}</span>
+      `;
+      container.appendChild(card);
+    });
+
+    // Handle Form Lead Submission
+    document.getElementById('lead-form').addEventListener('submit', (e) => {
+      e.preventDefault();
+      parentData = {
+        parentName: document.getElementById('parent-name').value,
+        contact: document.getElementById('parent-contact').value,
+        childName: document.getElementById('child-name').value || "Your Child",
+        childAge: document.getElementById('child-age').value
+      };
+      
+      document.getElementById('step-intro').classList.add('hidden');
+      document.getElementById('step-checklist').classList.remove('hidden');
+      window.scrollTo(0, 0);
+    });
+
+    // Track Checkbox Score
+    container.addEventListener('change', (e) => {
+      if (e.target.classList.contains('q-checkbox')) {
+        const idx = parseInt(e.target.getAttribute('data-idx'));
+        selectedScores[idx] = e.target.checked;
+        const total = selectedScores.filter(Boolean).length;
+        document.getElementById('current-score').innerText = total;
+      }
+    });
+
+    // Generate Analysis
+    document.getElementById('btn-submit-checklist').addEventListener('click', () => {
+      const score = selectedScores.filter(Boolean).length;
+      renderAnalysis(score);
+      document.getElementById('step-checklist').classList.add('hidden');
+      document.getElementById('step-results').classList.remove('hidden');
+      window.scrollTo(0, 0);
+    });
+
+    function renderAnalysis(score) {
+      const name = parentData.childName;
+      document.getElementById('res-child-title').innerText = `${name}'s Creative Profile`;
+      document.getElementById('res-score-num').innerText = score;
+
+      let archetype = "";
+      let summary = "";
+      let superpower = "";
+      let thinking = "";
+      let recommendation = "";
+
+      if (score >= 10) {
+        archetype = "The Designer Brain 🧠🎨";
+        summary = `${name} exhibits classic 'Designer Brain' traits! With 10+ positive indicators, your child demonstrates advanced spatial visualization, non-linear problem solving, and intrinsic curiosity.`;
+        superpower = "Divergent Innovation — Ability to connect unrelated ideas and imagine original physical or conceptual structures.";
+        thinking = "Spatial & Visual-First Thinker. They don't just absorb information; they mentally deconstruct and redesign it.";
+        recommendation = "Provide open-ended creation toolkits (cardboard, 3D modeling tools, design kits) rather than step-by-step rigid instructions.";
+      } else if (score >= 6) {
+        archetype = "The Budding Inventor 🛠️✨";
+        summary = `${name} shows strong creative curiosity with high potential for design thinking when given the right creative environment.`;
+        superpower = "Practical Curiosity — Keen interest in testing how things work and modifying existing ideas.";
+        thinking = "Balanced Analytical & Creative Thinker. Combines logical structure with creative problem-solving sparks.";
+        recommendation = "Encourage more unstructured play and celebrate 'failing forward' during creative experiments.";
+      } else {
+        archetype = "The Grounded Analyst 📊🔍";
+        summary = `${name} leans toward structured, methodical thinking, using logical reasoning to understand the world around them.`;
+        superpower = "Structured Precision — Methodical focus and high accuracy in step-by-step tasks.";
+        thinking = "Sequential & Methodical. Enjoys clear rules, structured objectives, and practical outcomes.";
+        recommendation = "Introduce low-stakes creative activities without set outcomes (e.g., fluid art, free Lego builds) to ignite creative confidence.";
+      }
+
+      document.getElementById('res-archetype').innerText = archetype;
+      document.getElementById('res-summary').innerText = summary;
+      document.getElementById('res-superpower').innerText = superpower;
+      document.getElementById('res-thinking-style').innerText = thinking;
+      document.getElementById('res-recommendation').innerText = recommendation;
+
+      // WhatsApp Share Link
+      const shareText = encodeURIComponent(`I just tested ${name}'s creative profile using the 15-Point Parent Checklist! Score: ${score}/15 - Archetype: ${archetype}. Test your child here: ${window.location.href}`);
+      document.getElementById('btn-share-whatsapp').onclick = () => {
+        window.open(`https://api.whatsapp.com/send?text=${shareText}`, '_blank');
+      };
+    }
+  </script>
+</body>
+</html>
